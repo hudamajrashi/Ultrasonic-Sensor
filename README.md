@@ -1,8 +1,15 @@
 # Ultrasonic Sensor (HC-SR04)
 
+## Circuit Preview
+
+![Ultrasonic Setup 3](ultrasonicSensor.png)
+
+---
+
 ## 1. Sensor Type
-The Ultrasonic Sensor is a **Digital sensor**  
-because it uses digital signals (HIGH / LOW) for triggering and receiving.
+
+The Ultrasonic Sensor is a **Digital sensor**
+because it uses digital signals (HIGH / LOW).
 
 ---
 
@@ -11,13 +18,8 @@ because it uses digital signals (HIGH / LOW) for triggering and receiving.
 The sensor works based on:
 **Sound Wave Reflection (Echo)**
 
-### How it works:
-- The sensor sends ultrasonic waves
-- The waves hit an object
-- The waves reflect back to the sensor
-- The sensor measures the time taken
-
 ### Formula:
+
 Distance = (Speed × Time) / 2
 
 In Arduino:
@@ -27,47 +29,31 @@ Distance = Time × 0.017
 
 ## 3. Datasheet & Voltage
 
-- Operating Voltage: **5V**
-- Measuring Range: **2 cm to 400 cm**
+* Operating Voltage: **5V**
+* Measuring Range: **2 cm to 400 cm**
 
 ---
 
 ## 4. Pins & Connection
 
-### Pins:
-- VCC → Power
-- GND → Ground
-- TRIG → Trigger (Output)
-- ECHO → Echo (Input)
-
-### Arduino UNO Connection:
-- VCC → 5V
-- GND → GND
-- TRIG → Digital Pin 4
-- ECHO → Digital Pin 5
+* VCC → 5V
+* GND → GND
+* TRIG → Pin 9
+* ECHO → Pin 10
 
 ---
 
-## 5. Circuit Implementation
-
-- Connect the sensor to Arduino
-- Check all connections carefully
-- Run the simulation or real circuit
-
----
-
-## 6. Arduino Code (Serial Monitor)
+## 5. Arduino Code
 
 ```cpp
-int trigPin = 4;
-int echoPin = 5;
+int trigPin = 9;
+int echoPin = 10;
 
 long duration;
 float distance;
 
 void setup() {
   Serial.begin(9600);
-  
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 }
@@ -85,10 +71,23 @@ void loop() {
   distance = duration * 0.034 / 2;
 
   Serial.print("Distance: ");
-  Serial.print(distance);
-  Serial.println(" cm");
+  Serial.println(distance);
 
   delay(500);
 }
-  delay(500);
-}
+```
+
+---
+
+## Circuit Serial Monitor
+
+![Ultrasonic Setup 1](ultrasonic_sensor_serialMonitor.png)
+![Ultrasonic Setup 2](ultrasonic_sensor2_serialMonitor.png)
+
+---
+
+## 6. Project Purpose
+
+* Distance measurement
+* Parking sensors
+* Obstacle detection
